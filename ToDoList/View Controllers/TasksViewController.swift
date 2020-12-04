@@ -53,6 +53,41 @@ class TasksViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+            StorageManager.shard.delete(task: task)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit") {
+            (_, _, isDone) in
+            self.showAlertTask(task: task) {
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+            isDone(true)
+        }
+        
+        let title = indexPath.section == 0 ? "Done" : "Undone"
+        let doneAction = UIContextualAction(style: .normal, title: title) {
+            (_, _, isDone) in
+            StorageManager.shard.done(task: task)
+            
+            let indexPathCurrentList = IndexPath(row: self.currentTasks.count - 1, section: 0)
+            let indexPathCompletionList = IndexPath(row: self.completedTasks.count - 1, section: 1)
+            
+            let indexPathDestination = indexPath.section == 0 ? indexPathCompletionList : indexPathCurrentList
+            
+            tableView.moveRow(at: indexPath, to: indexPathDestination)
+            isDone(true)
+        }
+        doneAction.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        
+        return UISwipeActionsConfiguration(actions: [doneAction, deleteAction, editAction])
+    }
+    
     @objc private func addButtonPressed() {
         showAlertTask()
     }
@@ -61,15 +96,22 @@ class TasksViewController: UITableViewController {
 
 extension TasksViewController {
     
-    private func showAlertTask() {
-        let alert = AlertController(title: "New Task", message: "Insert new Task", preferredStyle: .alert)
+    private func showAlertTask(task: Task? = nil, complition: (() -> Void)? = nil) {
         
-        alert.action { newValue, note in
-            let task = Task(value: [newValue, note])
-            
-            StorageManager.shard.save(task: task, in: self.taskList)
-            let rowIndex = IndexPath(row: self.currentTasks.count - 1, section: 0)
-            self.tableView.insertRows(at: [rowIndex], with: .automatic)
+        let title = task != nil ? "Edit Task" : "New Task"
+        
+        let alert = AlertController(title: title, message: "Insert new Task", preferredStyle: .alert)
+        
+        alert.action(task: task) { newValue, note in
+            if let task = task, let complition = complition {
+                StorageManager.shard.edit(task: task, name: newValue, note: note)
+                complition()
+            } else {
+                let task = Task(value: [newValue, note])
+                StorageManager.shard.save(task: task, in: self.taskList)
+                let rowIndex = IndexPath(row: self.currentTasks.count - 1, section: 0)
+                self.tableView.insertRows(at: [rowIndex], with: .automatic)
+            }
         }
         
         present(alert, animated: true)

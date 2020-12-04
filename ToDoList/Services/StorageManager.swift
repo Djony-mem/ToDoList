@@ -33,9 +33,34 @@ class StorageManager {
         }
     }
     
+    func done(taskList: TaskList) {
+        write {
+            taskList.tasks.setValue(true, forKey: "isComplete")
+        }
+    }
+    
     func save(task: Task, in taskList: TaskList) {
         write {
             taskList.tasks.append(task)
+        }
+    }
+    
+    func delete(task: Task) {
+        write {
+            realm.delete(task)
+        }
+    }
+    
+    func edit(task: Task, name: String, note: String) {
+        write {
+            task.name = name
+            task.note = note
+        }
+    }
+    
+    func done(task: Task) {
+        write {
+            task.isComplete.toggle()
         }
     }
     

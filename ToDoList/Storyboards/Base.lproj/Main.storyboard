@@ -22,6 +22,9 @@
                                 <segment title="A-Z"/>
                                 <segment title="Date"/>
                             </segments>
+                            <connections>
+                                <action selector="sortedTaskList:" destination="YCJ-Ta-gQM" eventType="valueChanged" id="dk2-hq-MDe"/>
+                            </connections>
                         </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellForTask" textLabel="VFT-M7-O3K" detailTextLabel="kWw-MA-kCM" style="IBUITableViewCellStyleValue1" id="r8g-jZ-RaT">
@@ -68,7 +71,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TbD-Iz-Usl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="230" y="114"/>
+            <point key="canvasLocation" x="323" y="12"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="y8Y-cY-JwC">

@@ -17,6 +17,7 @@
 		76D8CF9E257668CB00EAE989 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8CF9D257668CB00EAE989 /* Task.swift */; };
 		76D8CFA625769E0500EAE989 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8CFA525769E0500EAE989 /* StorageManager.swift */; };
 		76D8CFB02578244000EAE989 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8CFAF2578244000EAE989 /* AlertController.swift */; };
+		76D8CFB4257AD09D00EAE989 /* Extention + UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D8CFB3257AD09C00EAE989 /* Extention + UITableViewCell.swift */; };
 		D53CAD64949B9553E9BC69B2 /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8298D1A5551388215CC3D51 /* Pods_ToDoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		76D8CF9D257668CB00EAE989 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		76D8CFA525769E0500EAE989 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		76D8CFAF2578244000EAE989 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		76D8CFB3257AD09C00EAE989 /* Extention + UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + UITableViewCell.swift"; sourceTree = "<group>"; };
 		B8298D1A5551388215CC3D51 /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 				76D8CF952573AE4800EAE989 /* TasksViewController.swift */,
 				76D8CFAF2578244000EAE989 /* AlertController.swift */,
 				76D8CF922573AD5500EAE989 /* TaskListsViewController.swift */,
+				76D8CFB3257AD09C00EAE989 /* Extention + UITableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			files = (
 				76D8CF792572711E00EAE989 /* AppDelegate.swift in Sources */,
 				76D8CF962573AE4800EAE989 /* TasksViewController.swift in Sources */,
+				76D8CFB4257AD09D00EAE989 /* Extention + UITableViewCell.swift in Sources */,
 				76D8CF9E257668CB00EAE989 /* Task.swift in Sources */,
 				76D8CFA625769E0500EAE989 /* StorageManager.swift in Sources */,
 				76D8CFB02578244000EAE989 /* AlertController.swift in Sources */,
